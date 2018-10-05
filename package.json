@@ -1,8 +1,8 @@
 {
-  "name": "ylz.logger",
+  "name": "ylz-logger",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aytekinyaliz/YLZ.Logger.git"
