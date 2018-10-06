@@ -1,19 +1,20 @@
-import * as winston from "winston";
+const { createLogger, format, transports, LoggerInstance } = require('winston');
+const { combine, timestamp, prettyPrint } = format;
 
 
 const level = process.env.LOG_LEVEL || 'debug';
 
 //@ts-ignore
-const logger: winston.LoggerInstance = winston.createLogger({
-   transports: [
-      new winston.transports.Console({
-         level,
-         //@ts-ignore
-         timestamp: () => {
-            return new Date().toISOString();
-         }
-      })
-   ]
+const logger: LoggerInstance = createLogger({
+   level,
+   format: combine (
+      timestamp(),
+      prettyPrint()
+   ),
+   transports: [new transports.Console()]
 });
+
+//@ts-ignore
+logger.log = (...rest) => console.log(...rest);
 
 export default logger;
