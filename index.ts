@@ -1,20 +1,20 @@
 const { createLogger, format, transports, LoggerInstance } = require('winston');
-const { combine, timestamp, prettyPrint } = format;
+const { combine, timestamp, prettyPrint, label } = format;
 
 
 const level = process.env.LOG_LEVEL || 'debug';
 
-//@ts-ignore
-const logger: LoggerInstance = createLogger({
+// @ts-ignore
+const logger = createLogger({
    level,
-   format: combine (
+   format: combine(
       timestamp(),
-      prettyPrint()
+      format.json()
    ),
    transports: [new transports.Console()]
 });
 
 //@ts-ignore
-logger.log = (...rest) => console.log(...rest);
+logger.log = (...rest) => console.log(`${new Date().toISOString()} - log - `, ...rest);
 
 export default logger;
