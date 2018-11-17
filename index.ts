@@ -16,14 +16,14 @@
 
 
 const logger = {
-   info: (...params) => console.info(`${new Date().toISOString()} - info: `, ...params),
-   log: (...params) => console.log(`${new Date().toISOString()} - log: `, ...params),
+   info: (...params) => console.info(`${new Date().toISOString()} - info:`, ...params),
+   log: (...params) => console.log(`${new Date().toISOString()} - log:`, ...params),
    debug: (...params) => {
    	if(process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'TEST') {
-   		console.debug(`${new Date().toISOString()} - debug: `, ...params);
+   		console.debug(`${new Date().toISOString()} - debug:`, ...params);
    	}
    },
-   error: (...params) => console.error(`${new Date().toISOString()} - error: `, ...params)
+   error: (...params) => console.error(`${new Date().toISOString()} - error:`, ...params)
 }
 
 
