@@ -1,30 +1,30 @@
-// const { createLogger, format, transports, LoggerInstance } = require('winston');
-// const { combine, timestamp, prettyPrint, label } = format;
-
-
+// import * as winston from "winston";
+//
 // const level = process.env.LOG_LEVEL || 'debug';
 //
-// // @ts-ignore
-// const logger = createLogger({
-//    level,
-//    format: combine(
-//       timestamp(),
-//       format.json()
-//    ),
-//    transports: [new transports.Console()]
+// const logger: winston.LoggerInstance = new winston.Logger({
+//    transports: [
+//       new winston.transports.Console({
+//          level: level,
+//          timestamp: function () {
+//             return new Date().toISOString();
+//          }
+//       })
+//    ]
 // });
-
+//
+// export = logger
 
 const logger = {
-   info: (...params) => console.info(`${new Date().toISOString()} - info:`, ...params),
-   log: (...params) => console.log(`${new Date().toISOString()} - log:`, ...params),
-   debug: (...params) => {
-   	if(process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'TEST') {
-   		console.debug(`${new Date().toISOString()} - debug:`, ...params);
-   	}
-   },
-   error: (...params) => console.error(`${new Date().toISOString()} - error:`, ...params)
-}
-
+  error: (...params: any[]) => console.error(`${new Date().toISOString()} - error:`, ...params),
+  debug: (...params: any[]) => {
+    if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV !== "TEST") {
+      console.debug(`${new Date().toISOString()} - debug:`, ...params);
+    }
+  },
+  info: (...params: any[]) => console.info(`${new Date().toISOString()} - info:`, ...params),
+  log: (...params: any[]) => console.log(`${new Date().toISOString()} - log:`, ...params),
+  warn: (...params: any[]) => console.warn(`${new Date().toISOString()} - warn:`, ...params)
+};
 
 export default logger;
