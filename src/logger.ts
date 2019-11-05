@@ -15,14 +15,24 @@
 //
 // export = logger
 
-export const logger = {
-  error: (...params: any[]) => console.error(`${new Date().toISOString()} - error:`, ...params),
-  debug: (...params: any[]) => {
-    if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV !== "TEST") {
-      console.debug(`${new Date().toISOString()} - debug:`, ...params);
-    }
-  },
-  info: (...params: any[]) => console.info(`${new Date().toISOString()} - info:`, ...params),
-  log: (...params: any[]) => console.log(`${new Date().toISOString()} - log:`, ...params),
-  warn: (...params: any[]) => console.warn(`${new Date().toISOString()} - warn:`, ...params)
-};
+export function error(...params: any[]) {
+  console.error(`${new Date().toISOString()} - error:`, ...params);
+}
+
+export function debug(...params: any[]) {
+  if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV !== "TEST") {
+    console.debug(`${new Date().toISOString()} - debug:`, ...params);
+  }
+}
+
+export function info(...params: any[]) {
+  console.info(`${new Date().toISOString()} - info:`, ...params);
+}
+
+export function log(...params: any[]) {
+  console.log(`${new Date().toISOString()} - log:`, ...params);
+}
+
+export function warn(...params: any[]) {
+  console.warn(`${new Date().toISOString()} - warn:`, ...params);
+}
